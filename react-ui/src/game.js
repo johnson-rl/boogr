@@ -10,7 +10,9 @@ class Game extends Component {
       boogies: 0,
       combat: true,
       action: false
-    }
+    };
+    this.move = this.move.bind(this)
+    this.hunt = this.hunt.bind(this)
   }
 
   combat() {
@@ -42,7 +44,18 @@ class Game extends Component {
   map() {
     return(
       <div>
-        <div className="col-xs-6"></div>
+        <div className="col-xs-6">
+          <div className="row">
+            <p>Hero Image</p>
+          </div>
+          <div className="row">
+            <p>Math Question</p>
+            <p>Math Answers</p>
+          </div>
+        </div>
+        <div className="col-xs-6">
+          <p>Map goes here</p>
+        </div>
       </div>
     )
   }
@@ -52,21 +65,40 @@ class Game extends Component {
       <div>
         <div className="options row">
           <div className="col-xs-4 col-xs-offset-2">
-            <button className="btn btn-primary btn-large">Move</button>
+            <button
+              className="btn btn-primary btn-large"
+              onClick={this.move}
+              >Move</button>
           </div>
           <div className="col-xs-4">
-            <button className="btn btn-danger btn-large">Hunt Tissue</button>
+            <button
+              className="btn btn-danger btn-large"
+              onClick={this.hunt}
+              >Hunt Tissue</button>
           </div>
         </div>
       </div>
     )
   }
 
+  hunt(){
+    this.setState({
+      action: true,
+      combat: true
+    })
+  }
+
+  move() {
+    this.setState({
+      action: true,
+      combat: false
+    })
+  }
+
+
   render(){
-    console.log(this.state.action)
 
     if (!this.state.action) {
-      console.log('opt')
       return (
         this.opt()
       )
