@@ -63,3 +63,24 @@
 .booger-img, .tissue-img{
   height: 60px;
 }
+
+.Question {
+  background: #FF9999;
+  height: 100%;
+  padding: 60px 0;
+}
+
+
+.Question .question-container {
+  padding: 60px 0 0 0;
+}
+
+.Question .answers-container {
+  padding: 60px 30px;
+}
+
+.Question .btn {
+  background: #1BBABA;
+  display: block;
+  width: 100%;
+}

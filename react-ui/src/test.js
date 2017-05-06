@@ -5,6 +5,7 @@ const Test = (props) => {
 
     return(
       <div className="col-xs-6 game">
+<<<<<<< HEAD
         <div className="col-xs-2 tissue-div">
           <img src={"https://i.imgur.com/qIRjoAW.jpg"} alt="sub" className="tissue-img img-responsive"/>
         </div>
@@ -21,6 +22,9 @@ const Test = (props) => {
         <div className="sub">
           <img src={"https://i.imgur.com/LX0IkHs.jpg"} alt="sub" className="banana-img img-responsive"/>
         </div>
+=======
+        <img src={"https://i.imgur.com/DFzuiNJ.png"} alt="sub" className="banana img-responsive"/>
+>>>>>>> master
       </div>
       )
 }
