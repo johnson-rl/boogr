@@ -23,15 +23,43 @@
   to { transform: rotate(360deg); }
 }
 
-.banana {
+.banana-img {
         -moz-transform: scaleX(-1);
         -o-transform: scaleX(-1);
         -webkit-transform: scaleX(-1);
         transform: scaleX(-1);
         filter: FlipH;
         -ms-filter: "FlipH";
+        margin-top: -300px;
+        height: 300px;
+        margin: 0 auto;
+         margin-top: 50px;
+  
+  animation: bounce 1.5s infinite alternate;
+  -webkit-animation: bounce 1.5s infinite alternate;
+}
+
+@keyframes bounce {
+  from {
+    transform: translateY(0px);
+  }
+  to {
+    transform: translateY(-15px);
+  }
+}
+@-webkit-keyframes bounce {
+  from {
+    transform: translateY(0px);
+  }
+  to {
+    transform: translateY(-15px);
+  }
 }
 
 .game {
   border: 2px solid black;
+}
+
+.booger-img, .tissue-img{
+  height: 60px;
 }
