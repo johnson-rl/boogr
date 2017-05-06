@@ -7,8 +7,8 @@ class App extends Component {
   render() {
     return (
 
-      <div className="App">
-        <Game />
+      <div className= "App ">
+        <Test />
       </div>
     );
   }
