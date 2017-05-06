@@ -5,23 +5,26 @@ class Question extends Component {
     return (
       <div className="Question">
 
-      	<div class="question-field">
+		<h1>Answer all the questions!</h1>
+
+      	<div className="question-container">
       		<p>
-      			This is a question
+      			This is a question (?)
       		</p>
       	</div>
-      	<div class="row">
-      		<div class="col-lg-3">
-      			<button class="btn">Answer A</button>
+
+      	<div className="row answers-container">
+      		<div className="col-xs-3">
+      			<button className="btn btn-answer">Answer A</button>
       		</div>
-      		<div class="col-lg-3">
-      			<button class="btn">Answer B</button>
+      		<div className="col-xs-3">
+      			<button className="btn">Answer B</button>
       		</div>
-      		<div class="col-lg-3">
-      			<button class="btn">Answer C</button>
+      		<div className="col-xs-3">
+      			<button className="btn">Answer C</button>
       		</div>
-      		<div class="col-lg-3">
-      			<button class="btn">Answer D</button>
+      		<div className="col-xs-3">
+      			<button className="btn">Answer D</button>
       		</div>
       	</div>
 
