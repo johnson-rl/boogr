@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Question from './question';
 import Enemy from './enemy';
 import Board from './board';
+import Test from './test'
 
 import MathQuestion from './math-question';
 
@@ -51,7 +52,7 @@ class Game extends Component {
       <div>
         <div className="row">
           <div className="col-xs-6 no-side-paddings hero-box">
-            <p>Hero Image</p>
+            <Test />
           </div>
           <div className="col-xs-6">
             <Enemy />
@@ -76,8 +77,8 @@ class Game extends Component {
         <div className="row">
           <div className="col-xs-6 no-side-paddings">
             <div className="hero-box">
-              <p>Hero Image</p>
-            </div>    
+              <Test />
+            </div>
             <div className="row">
               <div className="col-xs-12">
                 <MathQuestion />
