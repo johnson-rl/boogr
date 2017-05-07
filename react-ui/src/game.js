@@ -28,10 +28,26 @@ const questions = [
   }
 ]
 
+let user = {
+  name: "Drizz",
+  position: 1,
+  tissues: 5,
+  boogies: 0,
+  tally: 0,
+  correct: [],
+  incorrect: []
+}
 
+const donors = [
+  "You’re disinfecting the Mobster Mirez. Think smart! Mirez is strategic and lawless.",
+  "You’re disinfecting the Booger Squad Fastout. Be careful! They’re known for being quick and dirty!",
+  "You’re disinfecting the Booger Mafia Prendium. Watch out! They’re crooked and nimble.",
+  "You’re disinfecting the Tinytalon Gang. Don’t be fooled! They may be small but they’re ruthless.",
+  "You’re disinfecting the Crime Boss Drizz. Look out! The Boss is corrupt and fierce.",
+  "You’re disinfecting Thegamershizzap! Keep your cool! The gamer is crafty and tricky."
+]
 
 /* Load Audio FX */
-
 
 window.answer_correct_tier_1 = new Wad({source : 'https://dl.dropboxusercontent.com/s/epuaco1gg71w3rp/answer_correct_tier_1.mp3?dl=1'});
 window.answer_correct_tier_2 = new Wad({source : 'https://dl.dropboxusercontent.com/s/hz6117s7mh4n5lr/answer_correct_tier_2.mp3?dl=1'});
@@ -67,13 +83,6 @@ window.panel_transition_03 = new Wad({source : 'https://dl.dropboxusercontent.co
 window.ship_move = new Wad({source : 'https://dl.dropboxusercontent.com/s/qc468psiqkju2b7/ship_move.mp3?dl=1'});
 window.sub_sonar = new Wad({source : 'https://dl.dropboxusercontent.com/s/ntcsq50xlq7bq2d/sub_sonar.mp3?dl=1'});
 
-
-
-
-
-
-
-
 class Game extends Component {
 
   constructor(){
@@ -83,7 +92,11 @@ class Game extends Component {
       tissues: 5,
       boogies: 0,
       combat: true,
-      action: false
+      action: false,
+      user: user,
+      attempts: 3,
+      spaces: 0,
+      enemy: 1
     };
     this.splat = this.splat.bind(this)
     this.hunt = this.hunt.bind(this)
@@ -92,10 +105,20 @@ class Game extends Component {
 
   checkAns(selected){
     if (selected.val === 1){
+      this.state.combat ? this.setState({tissues: this.state.tissues + 1}) : this.setState({spaces: this.state.spaces + 1})
+      console.log(this.state)
+    }
+    if (this.state.attempts === 1){
       this.setState({
-        action: false
+        action: false,
+        attempts : 3
+      })
+    } else {
+      this.setState({
+        attempts: this.state.attempts - 1
       })
     }
+
   }
 
   combat() {
@@ -103,10 +126,14 @@ class Game extends Component {
       <div>
         <div className="row">
           <div className="col-xs-6 no-side-paddings hero-box">
-            <Test />
+            <Test
+              boogies={this.state.boogies}
+              tissues={this.state.tissues}
+              />
           </div>
           <div className="col-xs-6 no-side-paddings enemy-box">
-            <Enemy />
+            <Enemy
+              enemy={this.state.enemy}/>
           </div>
         </div>
         <div className="row">
@@ -127,7 +154,10 @@ class Game extends Component {
         <div className="row">
           <div className="col-xs-6 no-side-paddings">
             <div className="hero-box">
-              <Test />
+              <Test
+                boogies={this.state.boogies}
+                tissues={this.state.tissues}
+                />
             </div>
             <div className="row">
               <div className="col-xs-12">
@@ -148,23 +178,29 @@ class Game extends Component {
   }
 
   opt() {
+    let enemyName = Math.floor(Math.random()*donors.length)
     return (
       <div className="container fixed-width">
         <div className="row">
           <div className="col-xs-6 no-side-paddings hero-box">
-            <Test />
+            <Test
+              boogies={this.state.boogies}
+              tissues={this.state.tissues}
+              />
           </div>
           <div className="col-xs-6 no-side-paddings enemy-box">
-            <Enemy />
+            <Enemy
+              enemy ={this.state.enemy}/>
           </div>
         </div>
         <div className="Question options row">
-          <h4>Oh noes!  There are boogies in your way!!!</h4>
-          <p>Do you want to answer trivia questions to earn extra tissues, or use your current tissues to splat the boogies?</p>
+          <h3>Oh noes!  There are boogies in your way!!!</h3>
+
+          <h4>{donors[enemyName]}</h4>
           <div className="col-xs-4 col-xs-offset-2">
             <button
               className="btn btn-primary btn-large"
-              onClick={this.splat}
+              onClick={()=>{this.splat(this.state.enemy)}}
               >Splat Boogies</button>
           </div>
           <div className="col-xs-4">
@@ -187,11 +223,16 @@ class Game extends Component {
     })
   }
 
-  splat() {
+  splat(enemy) {
+
     this.setState({
       action: true,
-      combat: false
+      combat: false,
+      boogies: this.state.boogies + enemy,
+      tissues: this.state.tissues - enemy,
+      enemy : Math.ceil(Math.random()*4)
     })
+    console.log(this.state)
   }
 
 
