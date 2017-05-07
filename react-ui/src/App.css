@@ -32,7 +32,6 @@ html {
   to { transform: rotate(360deg); }
 }
 
-<<<<<<< HEAD
 .banana-img {
         -moz-transform: scaleX(-1);
         -o-transform: scaleX(-1);
@@ -73,13 +72,11 @@ html {
 .booger-img, .tissue-img{
   height: 60px;
 }
-=======
 .container.fixed-width {
   width: 1000px;
 
 }
 
->>>>>>> master
 
 .no-side-paddings {
   padding-left: 0 !important;
@@ -131,9 +128,7 @@ html {
   display: block;
   width: 100%;
 }
-<<<<<<< HEAD
-=======
+
 .btn-answer:hover {
   opacity: 0.8;
 }
->>>>>>> master
