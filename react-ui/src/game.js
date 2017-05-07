@@ -75,7 +75,10 @@ class Game extends Component {
       <div>
         <div className="row">
           <div className="col-xs-6 no-side-paddings hero-box">
-            <Test />
+            <Test
+              boogies={this.state.boogies}
+              tissues={this.state.tissues}
+              />
           </div>
           <div className="col-xs-6 no-side-paddings enemy-box">
             <Enemy />
@@ -99,7 +102,10 @@ class Game extends Component {
         <div className="row">
           <div className="col-xs-6 no-side-paddings">
             <div className="hero-box">
-              <Test />
+              <Test
+                boogies={this.state.boogies}
+                tissues={this.state.tissues}
+                />
             </div>
             <div className="row">
               <div className="col-xs-12">
@@ -123,7 +129,10 @@ class Game extends Component {
       <div className="container fixed-width">
         <div className="row">
           <div className="col-xs-6 no-side-paddings hero-box">
-            <Test />
+            <Test
+              boogies={this.state.boogies}
+              tissues={this.state.tissues}
+              />
           </div>
           <div className="col-xs-6 no-side-paddings enemy-box">
             <Enemy
