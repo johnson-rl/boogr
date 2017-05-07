@@ -1,4 +1,7 @@
 import React, { Component } from 'react';
+import Question from './question';
+import Enemy from './enemy';
+import Board from './board';
 
 class Game extends Component {
 
@@ -23,18 +26,12 @@ class Game extends Component {
             <p>Hero Image</p>
           </div>
           <div className="col-xs-6">
-            <p>Enemy Image</p>
+            <Enemy />
           </div>
         </div>
         <div className="row">
           <div className="col-xs-12">
-            <div>
-              <p>This is the text of a question</p>
-              <p>Answer 1</p>
-              <p>Answer 2</p>
-              <p>Answer 3</p>
-              <p>Answer 4</p>
-            </div>
+            <Question />
           </div>
         </div>
       </div>
@@ -54,7 +51,7 @@ class Game extends Component {
           </div>
         </div>
         <div className="col-xs-6">
-          <p>Map goes here</p>
+          <Board />
         </div>
       </div>
     )
