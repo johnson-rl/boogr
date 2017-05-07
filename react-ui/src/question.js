@@ -46,7 +46,7 @@ class Question extends Component {
     return (
       <div className="Question">
 
-		<h1>Answer all the questions!</h1>
+        <h1>Answer all the questions!</h1>
 
       	<div className="question-container">
       		<p>
