@@ -23,6 +23,16 @@ const questions = [
   }
 ]
 
+let user = {
+  name: "Drizz",
+  position: 1,
+  tissues: 5,
+  boogies: 0,
+  tally: 0,
+  correct: [],
+  incorrect: []
+}
+
 class Game extends Component {
 
   constructor(){
@@ -32,7 +42,10 @@ class Game extends Component {
       tissues: 5,
       boogies: 0,
       combat: true,
-      action: false
+      action: false,
+      user: user,
+      attempts: 3,
+      spaces: 0
     };
     this.splat = this.splat.bind(this)
     this.hunt = this.hunt.bind(this)
@@ -41,10 +54,20 @@ class Game extends Component {
 
   checkAns(selected){
     if (selected.val === 1){
+      this.state.combat ? this.setState({tissues: this.state.tissues + 1}) : this.setState({spaces: this.state.spaces + 1})
+      console.log(this.state)
+    }
+    if (this.state.attempts === 1){
       this.setState({
-        action: false
+        action: false,
+        attempts : 3
+      })
+    } else {
+      this.setState({
+        attempts: this.state.attempts - 1
       })
     }
+
   }
 
   combat() {
@@ -95,7 +118,7 @@ class Game extends Component {
     )
   }
 
-  opt() {
+  opt(enemy) {
     return (
       <div className="container fixed-width">
         <div className="row">
@@ -103,7 +126,8 @@ class Game extends Component {
             <Test />
           </div>
           <div className="col-xs-6 no-side-paddings enemy-box">
-            <Enemy />
+            <Enemy
+              enemy ={enemy}/>
           </div>
         </div>
         <div className="Question options row">
@@ -112,7 +136,7 @@ class Game extends Component {
           <div className="col-xs-4 col-xs-offset-2">
             <button
               className="btn btn-primary btn-large"
-              onClick={this.splat}
+              onClick={()=>{this.splat(enemy)}}
               >Splat Boogies</button>
           </div>
           <div className="col-xs-4">
@@ -133,19 +157,25 @@ class Game extends Component {
     })
   }
 
-  splat() {
+  splat(enemy) {
+
+
     this.setState({
       action: true,
-      combat: false
+      combat: false,
+      boogies: this.state.boogies + enemy,
+      tissues: this.state.tissues - enemy
     })
+    console.log(this.state)
   }
 
 
   render(){
 
     if (!this.state.action) {
+      let enemy = Math.ceil(Math.random()*4)
       return (
-        this.opt()
+        this.opt(enemy)
       )
     } else {
       return (
