@@ -45,7 +45,8 @@ class Game extends Component {
       action: false,
       user: user,
       attempts: 3,
-      spaces: 0
+      spaces: 0,
+      enemy: 1
     };
     this.splat = this.splat.bind(this)
     this.hunt = this.hunt.bind(this)
@@ -81,7 +82,8 @@ class Game extends Component {
               />
           </div>
           <div className="col-xs-6 no-side-paddings enemy-box">
-            <Enemy />
+            <Enemy
+              enemy={this.state.enemy}/>
           </div>
         </div>
         <div className="row">
@@ -124,7 +126,7 @@ class Game extends Component {
     )
   }
 
-  opt(enemy) {
+  opt() {
     return (
       <div className="container fixed-width">
         <div className="row">
@@ -136,7 +138,7 @@ class Game extends Component {
           </div>
           <div className="col-xs-6 no-side-paddings enemy-box">
             <Enemy
-              enemy ={enemy}/>
+              enemy ={this.state.enemy}/>
           </div>
         </div>
         <div className="Question options row">
@@ -145,7 +147,7 @@ class Game extends Component {
           <div className="col-xs-4 col-xs-offset-2">
             <button
               className="btn btn-primary btn-large"
-              onClick={()=>{this.splat(enemy)}}
+              onClick={()=>{this.splat(this.state.enemy)}}
               >Splat Boogies</button>
           </div>
           <div className="col-xs-4">
@@ -168,12 +170,12 @@ class Game extends Component {
 
   splat(enemy) {
 
-
     this.setState({
       action: true,
       combat: false,
       boogies: this.state.boogies + enemy,
-      tissues: this.state.tissues - enemy
+      tissues: this.state.tissues - enemy,
+      enemy : Math.ceil(Math.random()*4)
     })
     console.log(this.state)
   }
@@ -182,9 +184,8 @@ class Game extends Component {
   render(){
 
     if (!this.state.action) {
-      let enemy = Math.ceil(Math.random()*4)
       return (
-        this.opt(enemy)
+        this.opt()
       )
     } else {
       return (
