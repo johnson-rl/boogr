@@ -54,13 +54,13 @@ class Game extends Component {
           <div className="col-xs-6 no-side-paddings hero-box">
             <Test />
           </div>
-          <div className="col-xs-6">
+          <div className="col-xs-6 no-side-paddings enemy-box">
             <Enemy />
           </div>
         </div>
         <div className="row">
 
-          <div className="col-xs-12">
+          <div className="col-xs-12 no-side-paddings">
             <Question
               question={questions[0]}
               checkAns={this.checkAns}
@@ -85,9 +85,9 @@ class Game extends Component {
               </div>
             </div>
           </div>
-        </div>
-        <div className="col-xs-6">
-          <Board />
+          <div className="col-xs-6 no-side-paddings game-board-box">
+            <Board />
+          </div>
         </div>
       </div>
     )
