@@ -137,3 +137,63 @@ html {
 .options {
   padding-top: 150px;
 }
+
+
+/* Progress Board & Boat */
+
+.gameBoard {
+  position: relative;
+}
+
+.progress-boat { 
+    position: absolute;
+    top: 616px;
+    left: 200px;
+    transition: 1.2s;
+}
+
+.progress-boat.step2 { 
+    top: 625px;
+    left: 256px;
+}
+
+.progress-boat.step3 { 
+    top: 625px;
+    left: 256px;
+}
+
+.progress-boat.step4 { 
+    top: 598px;
+    left: 339px;
+}
+
+.progress-boat.step5 { 
+    top: 558px;
+    left: 360px;
+}
+
+.progress-boat.step6 { 
+    top: 512px;
+    left: 342px;
+}
+
+.progress-boat.step7 { 
+    top: 482px;
+    left: 300px;
+}
+
+
+.progress-boat.step8 { 
+    top: 475px;
+    left: 240px;
+}
+
+.progress-boat.step9 { 
+    top: 475px;
+    left: 184px;
+}
+
+
+
+
+
