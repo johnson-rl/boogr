@@ -16,7 +16,18 @@ app.use(bodyParser.urlencoded({
 // **** QUESTIONS ****
 // Get one question
 app.get('/api/question/:id', function(req, res) {
-  db.Question.findOne({_id: questionId}, function(err, question) {
+  db.Question.findOne({_id: req.params.id}, function(err, question) {
+    if (err) {
+      console.log('Question findOne error in server.js', err);
+    }
+    console.log('your single question is ', question);
+    res.send(question);
+  })
+})
+
+//Get all questions
+app.get('/api/question', function(req, res) {
+  db.Question.find(function(err, question) {
     if (err) {
       console.log('Question findOne error in server.js', err);
     }
