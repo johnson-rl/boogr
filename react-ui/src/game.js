@@ -17,7 +17,7 @@ const questions = [
   {
     question: "It takes 5 tissues to defeat a booger. Billy has 3 tissues. How many more does he need?",
     correct: "2",
-    incorrect: ["1", "4", "3"],
+    incorrect: ["1", "4", "7"],
     difficulty: 5,
     subject: "subject must be in quotes"
   }
