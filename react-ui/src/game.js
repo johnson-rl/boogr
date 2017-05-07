@@ -85,7 +85,7 @@ class Game extends Component {
       combat: true,
       action: false
     };
-    this.move = this.move.bind(this)
+    this.splat = this.splat.bind(this)
     this.hunt = this.hunt.bind(this)
     this.checkAns = this.checkAns.bind(this)
   }
@@ -110,7 +110,6 @@ class Game extends Component {
           </div>
         </div>
         <div className="row">
-
           <div className="col-xs-12 no-side-paddings">
             <Question
               question={questions[0]}
@@ -150,20 +149,30 @@ class Game extends Component {
 
   opt() {
     return (
-      <div>
-        <div className="options row">
+      <div className="container fixed-width">
+        <div className="row">
+          <div className="col-xs-6 no-side-paddings hero-box">
+            <Test />
+          </div>
+          <div className="col-xs-6 no-side-paddings enemy-box">
+            <Enemy />
+          </div>
+        </div>
+        <div className="Question options row">
+          <h4>Oh noes!  There are boogies in your way!!!</h4>
+          <p>Do you want to answer trivia questions to earn extra tissues, or use your current tissues to splat the boogies?</p>
           <div className="col-xs-4 col-xs-offset-2">
             <button
               className="btn btn-primary btn-large"
-              onClick={this.move}
-              >Move</button>
+              onClick={this.splat}
+              >Splat Boogies</button>
           </div>
           <div className="col-xs-4">
             <button
               className="btn btn-danger btn-large"
               onClick={this.hunt}
               onMouseOver={ () => {window.answer_hover.play()} }
-              >Hunt Tissue</button>
+              >Earn Tissue</button>
           </div>
         </div>
 
@@ -178,7 +187,7 @@ class Game extends Component {
     })
   }
 
-  move() {
+  splat() {
     this.setState({
       action: true,
       combat: false
