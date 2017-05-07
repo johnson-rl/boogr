@@ -33,6 +33,15 @@ let user = {
   incorrect: []
 }
 
+const donors = [
+  "You’re disinfecting the Mobster Mirez. Think smart! Mirez is strategic and lawless.",
+  "You’re disinfecting the Booger Squad Fastout. Be careful! They’re known for being quick and dirty!",
+  "You’re disinfecting the Booger Mafia Prendium. Watch out! They’re crooked and nimble.",
+  "You’re disinfecting the Tinytalon Gang. Don’t be fooled! They may be small but they’re ruthless.",
+  "You’re disinfecting the Crime Boss Drizz. Look out! The Boss is corrupt and fierce.",
+  "You’re disinfecting Thegamershizzap! Keep your cool! The gamer is crafty and tricky."
+]
+
 class Game extends Component {
 
   constructor(){
@@ -127,6 +136,7 @@ class Game extends Component {
   }
 
   opt() {
+    let enemyName = Math.floor(Math.random()*donors.length)
     return (
       <div className="container fixed-width">
         <div className="row">
@@ -142,8 +152,9 @@ class Game extends Component {
           </div>
         </div>
         <div className="Question options row">
-          <h4>Oh noes!  There are boogies in your way!!!</h4>
-          <p>Do you want to answer trivia questions to earn extra tissues, or use your current tissues to splat the boogies?</p>
+          <h3>Oh noes!  There are boogies in your way!!!</h3>
+
+          <h4>{donors[enemyName]}</h4>
           <div className="col-xs-4 col-xs-offset-2">
             <button
               className="btn btn-primary btn-large"
