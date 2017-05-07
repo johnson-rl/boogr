@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
 import Question from './question';
+import Enemy from './enemy';
+import Board from './board';
+
 import MathQuestion from './math-question';
 
 const questions = [
@@ -50,8 +53,8 @@ class Game extends Component {
           <div className="col-xs-6 no-side-paddings hero-box">
             <p>Hero Image</p>
           </div>
-          <div className="col-xs-6 no-side-paddings enemy-box">
-            <p>Enemy Image</p>
+          <div className="col-xs-6">
+            <Enemy />
           </div>
         </div>
         <div className="row">
@@ -81,9 +84,9 @@ class Game extends Component {
               </div>
             </div>
           </div>
-          <div className="col-xs-6 no-side-paddings game-board-box">
-            <p>Map goes here</p>
-          </div>
+        </div>
+        <div className="col-xs-6">
+          <Board />
         </div>
       </div>
     )
