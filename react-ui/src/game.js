@@ -3,6 +3,25 @@ import Question from './question';
 import Enemy from './enemy';
 import Board from './board';
 
+import MathQuestion from './math-question';
+
+const questions = [
+  {
+    question: "The text of the question needs to be in quotes",
+    correct: "The answer should be in quotes too",
+    incorrect: ["The first wrong in quotes", "The second wrong in quotes", "the third wrong in quotes"],
+    difficulty: 3,
+    subject: "subject must be in quotes"
+  },
+  {
+    question: "The text of the question needs to be in quotes",
+    correct: "The answer should be in quotes too",
+    incorrect: ["The first wrong in quotes", "The second wrong in quotes", "the third wrong in quotes"],
+    difficulty: 5,
+    subject: "subject must be in quotes"
+  }
+]
+
 class Game extends Component {
 
   constructor(){
@@ -16,13 +35,22 @@ class Game extends Component {
     };
     this.move = this.move.bind(this)
     this.hunt = this.hunt.bind(this)
+    this.checkAns = this.checkAns.bind(this)
+  }
+
+  checkAns(selected){
+    if (selected.val === 1){
+      this.setState({
+        action: false
+      })
+    }
   }
 
   combat() {
     return (
       <div>
         <div className="row">
-          <div className="col-xs-6">
+          <div className="col-xs-6 no-side-paddings hero-box">
             <p>Hero Image</p>
           </div>
           <div className="col-xs-6">
@@ -30,8 +58,12 @@ class Game extends Component {
           </div>
         </div>
         <div className="row">
+
           <div className="col-xs-12">
-            <Question />
+            <Question
+              question={questions[0]}
+              checkAns={this.checkAns}
+              />
           </div>
         </div>
       </div>
@@ -41,13 +73,16 @@ class Game extends Component {
   map() {
     return(
       <div>
-        <div className="col-xs-6">
-          <div className="row">
-            <p>Hero Image</p>
-          </div>
-          <div className="row">
-            <p>Math Question</p>
-            <p>Math Answers</p>
+        <div className="row">
+          <div className="col-xs-6 no-side-paddings">
+            <div className="hero-box">
+              <p>Hero Image</p>
+            </div>    
+            <div className="row">
+              <div className="col-xs-12">
+                <MathQuestion />
+              </div>
+            </div>
           </div>
         </div>
         <div className="col-xs-6">
@@ -101,7 +136,7 @@ class Game extends Component {
       )
     } else {
       return (
-        <div className="container">
+        <div className="container fixed-width">
           {this.state.combat ? this.combat() : this.map() }
         </div>
       )
