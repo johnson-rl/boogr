@@ -47,8 +47,49 @@ const donors = [
   "You’re disinfecting Thegamershizzap! Keep your cool! The gamer is crafty and tricky."
 ]
 
-/* Load Audio FX */
 
+/* Load Music & Audio FX */
+
+/* Boogie Down Song ----------- */
+if(!window.burp_song) {
+  window.burp_song = new Wad({source : 'https://dl.dropboxusercontent.com/s/b4z7h1j7kidzl3l/burp_song.mp3?dl=1'});
+  window.burp_song.play({
+        loop    : true, // This overrides the value for loop on the constructor, if it was set. 
+        env     : {      // This is the ADSR envelope.
+            attack  : 1.5,  // Time in seconds from onset to peak volume.  Common values for oscillators may range from 0.05 to 0.3.
+            decay   : 0,  // Time in seconds from peak volume to sustain volume.
+            sustain : 1,  // Sustain volume level. This is a percent of the peak volume, so sensible values are between 0 and 1.
+            hold    : 86400, // Time in seconds to maintain the sustain volume level. If this is not set to a lower value, oscillators must be manually stopped by calling their stop() method.
+            release : 0     // Time in seconds from the end of the hold period to zero volume, or from calling stop() to zero volume.
+        },
+  });
+}
+
+/* Submarine Sonar */
+window.sub_sonar = new Wad({source : 'https://dl.dropboxusercontent.com/s/ntcsq50xlq7bq2d/sub_sonar.mp3?dl=1'});
+window.sub_sonar.play({
+      loop    : true, // This overrides the value for loop on the constructor, if it was set. 
+      env     : {      // This is the ADSR envelope.
+          attack  : 15,  // Time in seconds from onset to peak volume.  Common values for oscillators may range from 0.05 to 0.3.
+          decay   : 0,  // Time in seconds from peak volume to sustain volume.
+          sustain : 0.5,  // Sustain volume level. This is a percent of the peak volume, so sensible values are between 0 and 1.
+          hold    : 86400, // Time in seconds to maintain the sustain volume level. If this is not set to a lower value, oscillators must be manually stopped by calling their stop() method.
+          release : 0     // Time in seconds from the end of the hold period to zero volume, or from calling stop() to zero volume.
+      },
+});
+
+/* Submarine Movement */
+window.ship_move = new Wad({source : 'https://dl.dropboxusercontent.com/s/qc468psiqkju2b7/ship_move.mp3?dl=1'});
+//window.ship_move.play();
+
+
+
+/* Intro VO */
+window.vo_start = new Wad({source : 'https://dl.dropboxusercontent.com/s/68qxqx6hwjxso6j/vo_start.mp3?dl=1'});
+window.vo_inside = new Wad({source : 'https://dl.dropboxusercontent.com/s/6qmi7vnsh9nebu0/vo_inside_body_V2.mp3?dl=0'});
+
+
+// FX sounds
 window.answer_correct_tier_1 = new Wad({source : 'https://dl.dropboxusercontent.com/s/epuaco1gg71w3rp/answer_correct_tier_1.mp3?dl=1'});
 window.answer_correct_tier_2 = new Wad({source : 'https://dl.dropboxusercontent.com/s/hz6117s7mh4n5lr/answer_correct_tier_2.mp3?dl=1'});
 window.answer_correct_tier_up = new Wad({source : 'https://dl.dropboxusercontent.com/s/asgx7650tncsf4h/answer_correct_tier_up.mp3?dl=1'});
@@ -80,8 +121,6 @@ window.get_kleenex_07 = new Wad({source : 'https://dl.dropboxusercontent.com/s/q
 window.panel_transition_01 = new Wad({source : 'https://dl.dropboxusercontent.com/s/gnfmt188hn23uck/panel_transition_01.mp3?dl=1'});
 window.panel_transition_02 = new Wad({source : 'https://dl.dropboxusercontent.com/s/krb74dwql599qrd/panel_transition_02.mp3?dl=1'});
 window.panel_transition_03 = new Wad({source : 'https://dl.dropboxusercontent.com/s/lw9p5tkk16px5dk/panel_transition_03.mp3?dl=1'});
-window.ship_move = new Wad({source : 'https://dl.dropboxusercontent.com/s/qc468psiqkju2b7/ship_move.mp3?dl=1'});
-window.sub_sonar = new Wad({source : 'https://dl.dropboxusercontent.com/s/ntcsq50xlq7bq2d/sub_sonar.mp3?dl=1'});
 
 window.vo = new Wad({source : 'https://dl.dropboxusercontent.com/s/utjer3usldnykay/vo_inside_body_V2.mp3?dl=0' })
 
@@ -109,8 +148,16 @@ class Game extends Component {
 
   checkAns(selected){
     if (selected.val === 1){
+      // play sound for correct answer
+      window.answer_correct_tier_2.play();
+
       this.state.combat ? this.setState({tissues: this.state.tissues + 1}) : this.setState({spaces: this.state.spaces + 1})
       console.log(this.state)
+    } else {
+
+      // play sound for incorrect answer
+      window.answer_incorrect.play();
+
     }
     if (this.state.attempts === 1){
       this.setState({
@@ -118,6 +165,7 @@ class Game extends Component {
         attempts : 3
       })
     } else {
+
       this.setState({
         attempts: this.state.attempts - 1
       })
@@ -204,13 +252,22 @@ class Game extends Component {
           <div className="col-xs-4 col-xs-offset-2">
             <button
               className="btn btn-primary btn-large"
-              onClick={()=>{this.splat(this.state.enemy)}}
+              onClick={()=>{
+                  this.splat(this.state.enemy);
+                  window.panel_transition_01.play(); // play panel transition sound
+              }}
+              onMouseOver={ () => {
+                  window.answer_hover.play(); // play hover sound
+              }}
               >Splat Boogies</button>
           </div>
           <div className="col-xs-4">
             <button
               className="btn btn-danger btn-large"
-              onClick={this.hunt}
+              onClick={()=>{
+                  this.hunt();
+                  window.panel_transition_02.play(); // play panel transition sound
+              }}
               onMouseOver={ () => {window.answer_hover.play()} }
               >Earn Tissue</button>
           </div>
