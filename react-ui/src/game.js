@@ -83,6 +83,8 @@ window.panel_transition_03 = new Wad({source : 'https://dl.dropboxusercontent.co
 window.ship_move = new Wad({source : 'https://dl.dropboxusercontent.com/s/qc468psiqkju2b7/ship_move.mp3?dl=1'});
 window.sub_sonar = new Wad({source : 'https://dl.dropboxusercontent.com/s/ntcsq50xlq7bq2d/sub_sonar.mp3?dl=1'});
 
+window.vo = new Wad({source : 'https://dl.dropboxusercontent.com/s/utjer3usldnykay/vo_inside_body_V2.mp3?dl=0' })
+
 class Game extends Component {
 
   constructor(){
@@ -91,16 +93,18 @@ class Game extends Component {
       position : 0,
       tissues: 5,
       boogies: 0,
-      combat: true,
+      combat: false,
       action: false,
       user: user,
       attempts: 3,
       spaces: 0,
-      enemy: 1
+      enemy: 1,
+      start: true
     };
     this.splat = this.splat.bind(this)
     this.hunt = this.hunt.bind(this)
     this.checkAns = this.checkAns.bind(this)
+    this.begin = this.begin.bind(this)
   }
 
   checkAns(selected){
@@ -235,8 +239,38 @@ class Game extends Component {
     console.log(this.state)
   }
 
+  begin(){
+    this.setState({
+      start: false
+    })
+  }
+
 
   render(){
+
+    if (this.state.start === true){
+      window.vo.play({
+            loop    : false, // This overrides the value for loop on the constructor, if it was set.
+            env     : {      // This is the ADSR envelope.
+                attack  : 0,  // Time in seconds from onset to peak volume.  Common values for oscillators may range from 0.05 to 0.3.
+                decay   : 0,  // Time in seconds from peak volume to sustain volume.
+                sustain : 1,  // Sustain volume level. This is a percent of the peak volume, so sensible values are between 0 and 1.
+                hold    : 86400, // Time in seconds to maintain the sustain volume level. If this is not set to a lower value, oscillators must be manually stopped by calling their stop() method.
+                release : 0     // Time in seconds from the end of the hold period to zero volume, or from calling stop() to zero volume.
+            },
+      })
+      return (
+        <div>
+          <h1>Boogie Down:</h1>
+          <h3>Journey to the center of Dr. GoodGuyManDudeBroChief...or something</h3>
+          <img className="image-width" src="https://www.dropbox.com/s/rdi0gj7b0hqbuj1/dr_boogertron.png?dl=1"></img>
+          <button
+            className="btn btn-primary"
+            onClick={this.begin}
+            >Start Game</button>
+        </div>
+      )
+    }
 
     if (!this.state.action) {
       return (

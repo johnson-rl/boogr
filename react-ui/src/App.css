@@ -137,3 +137,7 @@ html {
 .options {
   padding-top: 150px;
 }
+
+.image-width {
+  width: 600px;
+}
