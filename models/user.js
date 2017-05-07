@@ -6,7 +6,11 @@ const UserSchema = new Schema ({
   position: String,
   tissues: String,
   boogies: String,
-  correct: Number,
+  tally: Number,
+  correct: [{
+    type: Schema.Types.ObjectId,
+    ref: 'Question'
+  }],
   incorrect: [{
     type: Schema.Types.ObjectId,
     ref: 'Question'

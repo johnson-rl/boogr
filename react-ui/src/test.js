@@ -1,7 +1,7 @@
 import React from "react";
 
 const Test = (props) => {
-
+    console.log(props)
     return(
       <div className="game">
         <div className="col-xs-2 tissue-div">
@@ -9,11 +9,11 @@ const Test = (props) => {
         </div>
         <div className="col-xs-3 tissue-count">
           <h4>Tissue Count:</h4>
-          <h4>4</h4>
+          <h4>{props.tissues}</h4>
         </div>
         <div className="col-xs-3 col-xs-offset-2 tissue-count">
           <h4>Booger Count:</h4>
-          <h4>4</h4>
+          <h4>{props.boogies}</h4>
         </div>
 
         <div className="col-xs-2 booger-div">
