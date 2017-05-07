@@ -9,39 +9,6 @@ app.use(bodyParser.urlencoded({
   extended : true
 }));
 
-app.get('*', (req, res) => {
-  console.log(path.resolve(__dirname, './react-ui/build', 'index.html'))
-  res.sendFile(path.resolve(__dirname, './react-ui/build', 'index.html'));
-});
-
-
-app.listen(process.env.PORT || 3000, function(){
-  console.log('express server online on port', 3000)
-});
-
-
-const express = require('express');
-const app = express();
-const db = require('./models');
-const bodyParser = require('body-parser');
-const path = require("path");
-
-app.use(express.static(path.resolve(__dirname, './react-ui/build')));
-app.use(bodyParser.urlencoded({
-  extended : true
-}));
-
-app.get('*', (req, res) => {
-  console.log(path.resolve(__dirname, './react-ui/build', 'index.html'))
-  res.sendFile(path.resolve(__dirname, './react-ui/build', 'index.html'));
-});
-
-
-app.listen(process.env.PORT || 3000, function(){
-  console.log('express server online on port', 3000)
-});
-
-
 ////////////////////
 ////Routes
 ////////////////////
@@ -74,11 +41,13 @@ app.post('/api/question', function (req, res) {
   //save the question to the db
   newQuestion.save(function(err, question){
     if (err) {
-      return console.log("save question error: " + err);
+      res.send(err)
+      console.log("save question error: " + err);
     }
+    res.send(question)
     console.log("saved ", question.question);
-  }
-}
+  })
+})
 
 // **** BOARD ****
 // Get one board space
@@ -157,4 +126,15 @@ app.delete('/api/user/:id', function (req, res) {
   db.User.findOneAndRemove({ _id: userId }, function (err, deletedUser) {
     res.json(deletedUser);
   });
+  })
+})
+
+app.get('*', (req, res) => {
+  console.log(path.resolve(__dirname, './react-ui/build', 'index.html'))
+  res.sendFile(path.resolve(__dirname, './react-ui/build', 'index.html'));
+});
+
+
+app.listen(process.env.PORT || 3000, function(){
+  console.log('express server online on port', 3000)
 });
