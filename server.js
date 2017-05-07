@@ -124,3 +124,37 @@ app.post('/api/user', function (req, res) {
       return console.log("save user error: " + err);
     }
     console.log("saved ", user.user.name);
+  }
+
+  // edit one user
+  app.put('/api/user/:id', function (req, res){
+    var userId = req.params.id;
+    db.User.findOne({ _id: userId }, function(err, foundUser){
+      if(err){
+        console.log('FindOne user error in server.js when trying to edit user', err);
+      }
+      console.log('your single user is ');
+      foundUser.name = req.body.name || foundUser.name;
+      foundUser.position = req.body.position || foundUser.position;
+      foundUser.tissues = req.body.tissues || foundUser.tissues;
+      foundUser.boogies = req.body.boogies || foundUser.boogies;
+      foundUser.correct = req.body.correct || foundUser.correct;
+      foundUser.incorrect = req.body.incorrect || foundUser.incorrect;
+      foundUser.save(function(err, user){
+        if (err) {
+          return console.log("save user error: " + err);
+        }
+        console.log("saved ", user);
+        res.json(user);
+      });
+    });
+  });
+
+// delete user
+app.delete('/api/user/:id', function (req, res) {
+  console.log('user delete', req.params);
+  var userId = req.params.id;
+  db.User.findOneAndRemove({ _id: userId }, function (err, deletedUser) {
+    res.json(deletedUser);
+  });
+});
