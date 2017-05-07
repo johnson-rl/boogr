@@ -1,7 +1,48 @@
 import React, { Component } from 'react';
 
 class Question extends Component {
+
+  shuffle(array) {
+    let currentIndex = array.length, temporaryValue, randomIndex;
+
+    // While there remain elements to shuffle...
+    while (0 !== currentIndex) {
+
+      // Pick a remaining element...
+      randomIndex = Math.floor(Math.random() * currentIndex);
+      currentIndex -= 1;
+
+      // And swap it with the current element.
+      temporaryValue = array[currentIndex];
+      array[currentIndex] = array[randomIndex];
+      array[randomIndex] = temporaryValue;
+    }
+
+    return array;
+  }
+
   render() {
+    console.log(this.props.question)
+
+    let bank = this.props.question.incorrect.map((ans)=>{
+      return { ans: ans, val: 0 }
+    })
+
+    bank.push({ ans: this.props.question.correct, val: 1 })
+
+    bank = this.shuffle(bank)
+
+    let answers = bank.map((selection)=>{
+      return (
+        <div className="col-xs-3" key={selection.ans}>
+          <button
+            className="btn btn-answer"
+            onClick={()=>{this.props.checkAns(selection)}}
+            >{selection.ans}</button>
+        </div>
+      )
+    })
+
     return (
       <div className="Question">
 
@@ -9,23 +50,12 @@ class Question extends Component {
 
       	<div className="question-container">
       		<p>
-      			This is a question (?)
+      			{this.props.question.question}
       		</p>
       	</div>
 
       	<div className="row answers-container">
-      		<div className="col-xs-3">
-      			<button className="btn btn-answer">Answer A</button>
-      		</div>
-      		<div className="col-xs-3">
-      			<button className="btn">Answer B</button>
-      		</div>
-      		<div className="col-xs-3">
-      			<button className="btn">Answer C</button>
-      		</div>
-      		<div className="col-xs-3">
-      			<button className="btn">Answer D</button>
-      		</div>
+      		{answers}
       	</div>
 
       </div>

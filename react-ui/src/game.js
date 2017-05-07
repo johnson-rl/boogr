@@ -1,4 +1,22 @@
 import React, { Component } from 'react';
+import Question from './question';
+
+const questions = [
+  {
+    question: "The text of the question needs to be in quotes",
+    correct: "The answer should be in quotes too",
+    incorrect: ["The first wrong in quotes", "The second wrong in quotes", "the third wrong in quotes"],
+    difficulty: 3,
+    subject: "subject must be in quotes"
+  },
+  {
+    question: "The text of the question needs to be in quotes",
+    correct: "The answer should be in quotes too",
+    incorrect: ["The first wrong in quotes", "The second wrong in quotes", "the third wrong in quotes"],
+    difficulty: 5,
+    subject: "subject must be in quotes"
+  }
+]
 
 class Game extends Component {
 
@@ -13,6 +31,15 @@ class Game extends Component {
     };
     this.move = this.move.bind(this)
     this.hunt = this.hunt.bind(this)
+    this.checkAns = this.checkAns.bind(this)
+  }
+
+  checkAns(selected){
+    if (selected.val === 1){
+      this.setState({
+        action: false
+      })
+    }
   }
 
   combat() {
@@ -28,13 +55,10 @@ class Game extends Component {
         </div>
         <div className="row">
           <div className="col-xs-12">
-            <div>
-              <p>This is the text of a question</p>
-              <p>Answer 1</p>
-              <p>Answer 2</p>
-              <p>Answer 3</p>
-              <p>Answer 4</p>
-            </div>
+            <Question
+              question={questions[0]}
+              checkAns={this.checkAns}
+              />
           </div>
         </div>
       </div>
