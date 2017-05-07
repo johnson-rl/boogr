@@ -22,7 +22,6 @@ class Question extends Component {
   }
 
   render() {
-    console.log(this.props.question)
 
     let bank = this.props.question.incorrect.map((ans)=>{
       return { ans: ans, val: 0 }

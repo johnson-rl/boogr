@@ -1,14 +1,15 @@
 html {
-  background: #222;
+  background-image: url('https://www.dropbox.com/s/2mjpyup8d2y80oq/BloodVein.png?dl=1');
 }
 
 .App {
   text-align: center;
-  background: #222;
+  /*background: #222;*/
   position: absolute;
   left: 50%;
   top: 50%;
   transform: translateY(-50%) translateX(-50%);
+  color: white;
 }
 
 .App-logo {
@@ -17,7 +18,7 @@ html {
 }
 
 .App-header {
-  background-color: #222;
+  /*background-color: #222;*/
   height: 150px;
   padding: 20px;
   color: white;
@@ -66,7 +67,7 @@ html {
 }
 
 .game {
-  border: 2px solid black;
+  /*border: 2px solid black;*/
 }
 
 .booger-img, .tissue-img{
@@ -88,28 +89,28 @@ html {
 /* Layout Boxes ================================== */
 .hero-box, .enemy-box {
   height: 350px;
-  background: #8B1E3F;
+  /*background: #8B1E3F;*/
 }
 
 .enemy-box {
-  background: #FF8C42;
+  /*background: #FF8C42;*/
 }
 
 .game-board-box {
   height: 700px;
-  background: #FFF;
+  /*background: #FFF;*/
 }
 
 /* Math Question ================================== */
 .MathQuestion {
-  background: #FDE74C;
+  /*background: #FDE74C;*/
   height: 350px;
   padding: 30px 15px 0 15px;
 }
 
 /* Question ================================== */
 .Question {
-  background: #FF9999;
+  /*background: #FF9999;*/
   height: 350px;
   padding: 30px 0 0 0;
 }

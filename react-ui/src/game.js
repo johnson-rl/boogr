@@ -8,16 +8,16 @@ import MathQuestion from './math-question';
 
 const questions = [
   {
-    question: "The text of the question needs to be in quotes",
-    correct: "The answer should be in quotes too",
-    incorrect: ["The first wrong in quotes", "The second wrong in quotes", "the third wrong in quotes"],
+    question: "What's the average speed of a laden swallow",
+    correct: "European or African swallow?",
+    incorrect: ["I DON'T KNOW THAT", "Blue.  No wait!  Yellowwwwwww!", "Ni"],
     difficulty: 3,
     subject: "subject must be in quotes"
   },
   {
-    question: "The text of the question needs to be in quotes",
-    correct: "The answer should be in quotes too",
-    incorrect: ["The first wrong in quotes", "The second wrong in quotes", "the third wrong in quotes"],
+    question: "It takes 5 tissues to defeat a booger. Billy has 3 tissues. How many more does he need?",
+    correct: "2",
+    incorrect: ["1", "4", "3"],
     difficulty: 5,
     subject: "subject must be in quotes"
   }
@@ -81,7 +81,10 @@ class Game extends Component {
             </div>
             <div className="row">
               <div className="col-xs-12">
-                <MathQuestion />
+                <MathQuestion
+                  question={questions[1]}
+                  checkAns={this.checkAns}
+                />
               </div>
             </div>
           </div>
