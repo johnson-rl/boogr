@@ -5,7 +5,7 @@ class Question extends Component {
     return (
       <div className="Question">
 
-		<h1>Answer all the questions!</h1>
+        <h1>Answer all the questions!</h1>
 
       	<div className="question-container">
       		<p>
@@ -18,13 +18,13 @@ class Question extends Component {
       			<button className="btn btn-answer">Answer A</button>
       		</div>
       		<div className="col-xs-3">
-      			<button className="btn">Answer B</button>
+      			<button className="btn btn-answer">Answer B</button>
       		</div>
       		<div className="col-xs-3">
-      			<button className="btn">Answer C</button>
+      			<button className="btn btn-answer">Answer C</button>
       		</div>
       		<div className="col-xs-3">
-      			<button className="btn">Answer D</button>
+      			<button className="btn btn-answer">Answer D</button>
       		</div>
       	</div>
 

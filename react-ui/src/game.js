@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import Question from './question';
+import MathQuestion from './math-question';
 
 class Game extends Component {
 
@@ -19,22 +21,16 @@ class Game extends Component {
     return (
       <div>
         <div className="row">
-          <div className="col-xs-6">
+          <div className="col-xs-6 no-side-paddings hero-box">
             <p>Hero Image</p>
           </div>
-          <div className="col-xs-6">
+          <div className="col-xs-6 no-side-paddings enemy-box">
             <p>Enemy Image</p>
           </div>
         </div>
         <div className="row">
-          <div className="col-xs-12">
-            <div>
-              <p>This is the text of a question</p>
-              <p>Answer 1</p>
-              <p>Answer 2</p>
-              <p>Answer 3</p>
-              <p>Answer 4</p>
-            </div>
+          <div className="col-xs-12 no-side-paddings">
+            <Question />
           </div>
         </div>
       </div>
@@ -44,17 +40,20 @@ class Game extends Component {
   map() {
     return(
       <div>
-        <div className="col-xs-6">
-          <div className="row">
-            <p>Hero Image</p>
+        <div className="row">
+          <div className="col-xs-6 no-side-paddings">
+            <div className="hero-box">
+              <p>Hero Image</p>
+            </div>    
+            <div className="row">
+              <div className="col-xs-12">
+                <MathQuestion />
+              </div>
+            </div>
           </div>
-          <div className="row">
-            <p>Math Question</p>
-            <p>Math Answers</p>
+          <div className="col-xs-6 no-side-paddings game-board-box">
+            <p>Map goes here</p>
           </div>
-        </div>
-        <div className="col-xs-6">
-          <p>Map goes here</p>
         </div>
       </div>
     )
@@ -104,7 +103,7 @@ class Game extends Component {
       )
     } else {
       return (
-        <div className="container">
+        <div className="container fixed-width">
           {this.state.combat ? this.combat() : this.map() }
         </div>
       )
