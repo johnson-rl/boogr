@@ -134,9 +134,14 @@ html {
   opacity: 0.8;
 }
 
+.boogs {
+  padding-top: 20px;
+}
+
 .options {
   padding-top: 150px;
 }
+
 
 
 /* Progress Board & Boat */
@@ -193,7 +198,7 @@ html {
     left: 184px;
 }
 
-
-
-
+.image-width {
+  width: 600px;
+}
 
