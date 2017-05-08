@@ -339,6 +339,12 @@ class Game extends Component {
 
   opt() {
     let enemyName = Math.floor(Math.random()*donors.length)
+    let attack = false
+
+    if (this.state.tissues >= this.state.enemy){
+      attack = true
+    }
+
     return (
       <div className="container fixed-width">
         <div className="row">
@@ -357,28 +363,31 @@ class Game extends Component {
           <h3>Oh noes!  There are boogies in your way!!!</h3>
 
           <h4>{donors[enemyName]}</h4>
-          <div className="col-xs-4 col-xs-offset-2">
-            <button
-              className="btn btn-primary btn-large"
-              onClick={()=>{
+            <div className="col-xs-4 col-xs-offset-2">
+              <button
+                className="btn btn-danger btn-large"
+                onClick={()=>{
+                    this.hunt();
+                    window.panel_transition_02.play(); // play panel transition sound
+                }}
+                onMouseOver={ () => {window.answer_hover.play()} }
+                >Earn Tissue</button>
+            </div>
+          { attack ?
+            <div className="col-xs-4 ">
+              <button
+                className="btn btn-primary btn-large"
+                onClick={()=>{
                   this.splat(this.state.enemy);
                   window.panel_transition_01.play(); // play panel transition sound
-              }}
-              onMouseOver={ () => {
+                }}
+                onMouseOver={ () => {
                   window.answer_hover.play(); // play hover sound
-              }}
-              >Splat Boogies</button>
-          </div>
-          <div className="col-xs-4">
-            <button
-              className="btn btn-danger btn-large"
-              onClick={()=>{
-                  this.hunt();
-                  window.panel_transition_02.play(); // play panel transition sound
-              }}
-              onMouseOver={ () => {window.answer_hover.play()} }
-              >Earn Tissue</button>
-          </div>
+                }}
+                >Splat Boogies</button>
+            </div> : ''
+          }
+
         </div>
 
       </div>
