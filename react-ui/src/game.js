@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import Question from './question';
 import Enemy from './enemy';
 import Board from './board';
-import Test from './test'
+import Test from './test' // no semi colon here, there's a good reason for this I'm assuming
 
 import MathQuestion from './math-question';
 
@@ -44,7 +44,7 @@ const donors = [
   "You’re disinfecting the Booger Mafia Prendium. Watch out! They’re crooked and nimble.",
   "You’re disinfecting the Tinytalon Gang. Don’t be fooled! They may be small but they’re ruthless.",
   "You’re disinfecting the Crime Boss Drizz. Look out! The Boss is corrupt and fierce.",
-  "You’re disinfecting Thegamershizzap! Keep your cool! The gamer is crafty and tricky."
+  "You’re disinfecting Thegamershizzap! Keep your cool! Thegamershizzap is crafty and tricky."
 ]
 
 /* Load Audio FX */
@@ -106,6 +106,8 @@ class Game extends Component {
   checkAns(selected){
     if (selected.val === 1){
       this.state.combat ? this.setState({tissues: this.state.tissues + 1}) : this.setState({spaces: this.state.spaces + 1})
+      this.state.position += 1
+      console.log("position is ", this.state.position)
       console.log(this.state)
     }
     if (this.state.attempts === 1){
@@ -118,7 +120,6 @@ class Game extends Component {
         attempts: this.state.attempts - 1
       })
     }
-
   }
 
   combat() {
@@ -129,11 +130,12 @@ class Game extends Component {
             <Test
               boogies={this.state.boogies}
               tissues={this.state.tissues}
-              />
+            />
           </div>
           <div className="col-xs-6 no-side-paddings enemy-box">
             <Enemy
-              enemy={this.state.enemy}/>
+              enemy={this.state.enemy}
+            />
           </div>
         </div>
         <div className="row">
@@ -141,7 +143,7 @@ class Game extends Component {
             <Question
               question={questions[0]}
               checkAns={this.checkAns}
-              />
+            />
           </div>
         </div>
       </div>
@@ -157,7 +159,7 @@ class Game extends Component {
               <Test
                 boogies={this.state.boogies}
                 tissues={this.state.tissues}
-                />
+              />
             </div>
             <div className="row">
               <div className="col-xs-12">
@@ -172,7 +174,6 @@ class Game extends Component {
             <Board />
           </div>
         </div>
-
       </div>
     )
   }
@@ -186,16 +187,16 @@ class Game extends Component {
             <Test
               boogies={this.state.boogies}
               tissues={this.state.tissues}
-              />
+            />
           </div>
           <div className="col-xs-6 no-side-paddings enemy-box">
             <Enemy
-              enemy ={this.state.enemy}/>
+              enemy ={this.state.enemy}
+            />
           </div>
         </div>
         <div className="Question options row">
           <h3>Oh noes!  There are boogies in your way!!!</h3>
-
           <h4>{donors[enemyName]}</h4>
           <div className="col-xs-4 col-xs-offset-2">
             <button
@@ -211,7 +212,6 @@ class Game extends Component {
               >Earn Tissue</button>
           </div>
         </div>
-
       </div>
     )
   }
@@ -246,7 +246,6 @@ class Game extends Component {
       return (
         <div className="container fixed-width">
           {this.state.combat ? this.combat() : this.map() }
-
 
            <AudioStuff />
 
