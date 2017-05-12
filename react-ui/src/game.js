@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import Question from './question';
 import Enemy from './enemy';
 import Board from './board';
-import Test from './test'
+import Test from './test' // no semi colon here, there's a good reason for this I'm assuming
 
 import MathQuestion from './math-question';
 
@@ -163,7 +163,7 @@ const donors = [
   "You’re disinfecting the Booger Mafia Prendium. Watch out! They’re crooked and nimble.",
   "You’re disinfecting the Tinytalon Gang. Don’t be fooled! They may be small but they’re ruthless.",
   "You’re disinfecting the Crime Boss Drizz. Look out! The Boss is corrupt and fierce.",
-  "You’re disinfecting Thegamershizzap! Keep your cool! The gamer is crafty and tricky."
+  "You’re disinfecting Thegamershizzap! Keep your cool! Thegamershizzap is crafty and tricky."
 ]
 
 
@@ -236,14 +236,14 @@ class Game extends Component {
   constructor(){
     super()
     this.state = {
-      position : 0,
+      position : 1,
       tissues: 5,
       boogies: 0,
       combat: false,
       action: false,
       user: user,
       attempts: 3,
-      spaces: 0,
+      spaces: 1,  // not currently in use.  allows us to make some questions worth more than one space of movement
       enemy: 1,
       start: true
     };
@@ -253,17 +253,30 @@ class Game extends Component {
     this.begin = this.begin.bind(this)
   }
 
+  checkPosition(){
+    if (this.position === 35) {
+      // DO LAST TURN SHIT
+    } else {
+      // this.checkAns = this.checkAns.bind(this)   // i think this is what gets put here.  this needs to be the regular turn stuff.
+    }
+  }
+
   checkAns(selected){
+    console.log('current question is ', selected) // selectd is an object with a key ans (with the answer to the question as the value) and a key of val with a value of 1)
     if (selected.val === 1){
       // play sound for correct answer
       window.answer_correct_tier_2.play();
-
-      this.state.combat ? this.setState({tissues: this.state.tissues + 1}) : this.setState({spaces: this.state.spaces + 1})
+      this.state.combat ? this.setState({tissues: this.state.tissues + 1}) : this.setState({position: this.state.position + this.state.spaces})
       console.log(this.state)
     } else {
 
       // play sound for incorrect answer
       window.answer_incorrect.play();
+        if (!this.state.combat) {
+          console.log('wrong answer test')
+          // save incorrect question to user.incorrect
+          // user.incorrect.push(questions[current])
+        }
 
     }
     if (this.state.attempts === 1){
@@ -277,11 +290,11 @@ class Game extends Component {
         attempts: this.state.attempts - 1
       })
     }
-
   }
 
   combat() {
     let current = Math.floor(Math.random()*questions.length)
+    // currentQuestion = questions[current]
     return (
       <div>
         <div className="row">
@@ -289,11 +302,12 @@ class Game extends Component {
             <Test
               boogies={this.state.boogies}
               tissues={this.state.tissues}
-              />
+            />
           </div>
           <div className="col-xs-6 no-side-paddings enemy-box">
             <Enemy
-              enemy={this.state.enemy}/>
+              enemy={this.state.enemy}
+            />
           </div>
         </div>
         <div className="row">
@@ -301,7 +315,7 @@ class Game extends Component {
             <Question
               question={questions[current]}
               checkAns={this.checkAns}
-              />
+            />
           </div>
         </div>
       </div>
@@ -317,7 +331,7 @@ class Game extends Component {
               <Test
                 boogies={this.state.boogies}
                 tissues={this.state.tissues}
-                />
+              />
             </div>
             <div className="row">
               <div className="col-xs-12">
@@ -332,7 +346,6 @@ class Game extends Component {
             <Board />
           </div>
         </div>
-
       </div>
     )
   }
@@ -352,16 +365,16 @@ class Game extends Component {
             <Test
               boogies={this.state.boogies}
               tissues={this.state.tissues}
-              />
+            />
           </div>
           <div className="col-xs-6 no-side-paddings enemy-box">
             <Enemy
-              enemy ={this.state.enemy}/>
+              enemy ={this.state.enemy}
+            />
           </div>
         </div>
         <div className="Question options row">
           <h3>Oh noes!  There are boogies in your way!!!</h3>
-
           <h4>{donors[enemyName]}</h4>
             <div className="col-xs-4 col-xs-offset-2">
               <button
@@ -389,7 +402,6 @@ class Game extends Component {
           }
 
         </div>
-
       </div>
     )
   }
@@ -478,7 +490,6 @@ class Game extends Component {
       return (
         <div className="container fixed-width">
           {this.state.combat ? this.combat() : this.map() }
-
 
            <AudioStuff />
 
