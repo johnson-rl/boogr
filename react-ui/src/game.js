@@ -88,7 +88,7 @@ class Game extends Component {
   constructor(){
     super()
     this.state = {
-      position : 0,
+      position : 1,
       tissues: 5,
       boogies: 0,
       combat: true,
@@ -103,10 +103,19 @@ class Game extends Component {
     this.checkAns = this.checkAns.bind(this)
   }
 
+  checkPosition(){
+    if (this.position === 35) {
+      // DO LAST TURN SHIT
+    } else {
+
+    }
+  }
+
   checkAns(selected){
     if (selected.val === 1){
       this.state.combat ? this.setState({tissues: this.state.tissues + 1}) : this.setState({spaces: this.state.spaces + 1})
-      this.state.position += 1
+      console.log("position is ", this.state.position)
+      this.setState({position: this.state.position + 1})
       console.log("position is ", this.state.position)
       console.log(this.state)
     }
