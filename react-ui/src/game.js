@@ -153,6 +153,7 @@ let user = {
   tissues: 5,
   boogies: 0,
   tally: 0,
+  currentQuestion: [],
   correct: [],
   incorrect: []
 }
@@ -262,7 +263,7 @@ class Game extends Component {
   }
 
   checkAns(selected){
-    console.log('current question is ', selected) // selectd is an object with a key ans (with the answer to the question as the value) and a key of val with a value of 1)
+    // console.log('current question is ', selected) // selectd is an object with a key ans (with the answer to the question as the value) and a key of val with a value of 1)
     if (selected.val === 1){
       // play sound for correct answer
       window.answer_correct_tier_2.play();
@@ -277,7 +278,6 @@ class Game extends Component {
           // save incorrect question to user.incorrect
           // user.incorrect.push(questions[current])
         }
-
     }
     if (this.state.attempts === 1){
       this.setState({
@@ -285,7 +285,6 @@ class Game extends Component {
         attempts : 3
       })
     } else {
-
       this.setState({
         attempts: this.state.attempts - 1
       })
@@ -294,7 +293,9 @@ class Game extends Component {
 
   combat() {
     let current = Math.floor(Math.random()*questions.length)
-    // currentQuestion = questions[current]
+    // insert a statechange
+    user.currentQuestion = questions[current];
+    console.log('current question is (do not be just the answer) ', user.currentQuestion)
     return (
       <div>
         <div className="row">
