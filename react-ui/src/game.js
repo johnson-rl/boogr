@@ -273,10 +273,9 @@ class Game extends Component {
 
       // play sound for incorrect answer
       window.answer_incorrect.play();
-        if (!this.state.combat) {
-          console.log('wrong answer test')
-          // save incorrect question to user.incorrect
-          // user.incorrect.push(questions[current])
+        if (this.state.combat) {
+          user.incorrect.push(user.currentQuestion)
+          console.log('wrong answer test', user)
         }
     }
     if (this.state.attempts === 1){
@@ -295,7 +294,6 @@ class Game extends Component {
     let current = Math.floor(Math.random()*questions.length)
     // insert a statechange
     user.currentQuestion = questions[current];
-    console.log('current question is (do not be just the answer) ', user.currentQuestion)
     return (
       <div>
         <div className="row">
