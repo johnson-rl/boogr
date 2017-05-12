@@ -257,22 +257,26 @@ class Game extends Component {
     if (this.position === 35) {
       // DO LAST TURN SHIT
     } else {
-      // this.checkAns = this.checkAns.bind(this)   // i think this is what gets put here.  this needs to be the
+      // this.checkAns = this.checkAns.bind(this)   // i think this is what gets put here.  this needs to be the regular turn stuff.
     }
   }
 
   checkAns(selected){
+    console.log('current question is ', selected) // selectd is an object with a key ans (with the answer to the question as the value) and a key of val with a value of 1)
     if (selected.val === 1){
       // play sound for correct answer
       window.answer_correct_tier_2.play();
-
       this.state.combat ? this.setState({tissues: this.state.tissues + 1}) : this.setState({position: this.state.position + this.state.spaces})
-      // this.setState({position: this.state.position + 1})
       console.log(this.state)
     } else {
 
       // play sound for incorrect answer
       window.answer_incorrect.play();
+        if (!this.state.combat) {
+          console.log('wrong answer test')
+          // save incorrect question to user.incorrect
+          // user.incorrect.push(questions[current])
+        }
 
     }
     if (this.state.attempts === 1){
@@ -290,6 +294,7 @@ class Game extends Component {
 
   combat() {
     let current = Math.floor(Math.random()*questions.length)
+    // currentQuestion = questions[current]
     return (
       <div>
         <div className="row">
