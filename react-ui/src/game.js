@@ -243,7 +243,7 @@ class Game extends Component {
       action: false,
       user: user,
       attempts: 3,
-      spaces: 0,
+      spaces: 1,  // not currently in use.  allows us to make some questions worth more than one space of movement
       enemy: 1,
       start: true
     };
@@ -257,7 +257,7 @@ class Game extends Component {
     if (this.position === 35) {
       // DO LAST TURN SHIT
     } else {
-
+      // this.checkAns = this.checkAns.bind(this)   // i think this is what gets put here.  this needs to be the
     }
   }
 
@@ -266,10 +266,8 @@ class Game extends Component {
       // play sound for correct answer
       window.answer_correct_tier_2.play();
 
-      this.state.combat ? this.setState({tissues: this.state.tissues + 1}) : this.setState({spaces: this.state.spaces + 1})
-      console.log("position is ", this.state.position)
-      this.setState({position: this.state.position + 1})
-      console.log("position is ", this.state.position)
+      this.state.combat ? this.setState({tissues: this.state.tissues + 1}) : this.setState({position: this.state.position + this.state.spaces})
+      // this.setState({position: this.state.position + 1})
       console.log(this.state)
     } else {
 
