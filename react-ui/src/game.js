@@ -137,7 +137,7 @@ class Game extends Component {
   // }
 
   creditToggle(){
-    this.state.credits ? this.setState({credits: false, start: false}) : this.setState({credits:true})
+    this.state.credits ? this.begin() : this.setState({credits:true})
   }
 
   bossFight(){
@@ -331,7 +331,8 @@ class Game extends Component {
       });
     }
     this.setState({
-      start: false
+      start: false,
+      credits: false
     })
   }
 
