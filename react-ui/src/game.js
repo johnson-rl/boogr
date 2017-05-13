@@ -257,6 +257,14 @@ class Game extends Component {
   checkPosition(){
     if (this.position === 35) {
       // DO LAST TURN SHIT
+      // ask three questions from the questions the player got wrong.  all three have to be answered right or get 3 new questions.
+      if (/* ask question and get right answer */){ // i want to write a function just for this to check length of user.incorrect and either ask random questions, or instead ask questions from the regular game.
+        if (/* ask question and get right answer  */){
+          if (/* ask question and get right answer  */){
+            // load win screen
+          }
+        }
+      }
     } else {
       // this.checkAns = this.checkAns.bind(this)   // i think this is what gets put here.  this needs to be the regular turn stuff.
     }
@@ -268,14 +276,11 @@ class Game extends Component {
       // play sound for correct answer
       window.answer_correct_tier_2.play();
       this.state.combat ? this.setState({tissues: this.state.tissues + 1}) : this.setState({position: this.state.position + this.state.spaces})
-      console.log(this.state)
     } else {
-
       // play sound for incorrect answer
       window.answer_incorrect.play();
         if (this.state.combat) {
           user.incorrect.push(user.currentQuestion)
-          console.log('wrong answer test', user)
         }
     }
     if (this.state.attempts === 1){
