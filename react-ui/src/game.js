@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Question from './question';
 import Enemy from './enemy';
 import Board from './board';
+import Winner from './winner';
 import Test from './test' // no semi colon here, there's a good reason for this I'm assuming
 
 import MathQuestion from './math-question';
@@ -254,20 +255,26 @@ class Game extends Component {
     this.begin = this.begin.bind(this)
   }
 
-  checkPosition(){
-    if (this.position === 35) {
-      // DO LAST TURN SHIT
-      // ask three questions from the questions the player got wrong.  all three have to be answered right or get 3 new questions.
-      if (/* ask question and get right answer */){ // i want to write a function just for this to check length of user.incorrect and either ask random questions, or instead ask questions from the regular game.
-        if (/* ask question and get right answer  */){
-          if (/* ask question and get right answer  */){
-            // load win screen
-          }
-        }
-      }
-    } else {
-      // this.checkAns = this.checkAns.bind(this)   // i think this is what gets put here.  this needs to be the regular turn stuff.
-    }
+
+  // checkPosition(){
+  //   if (this.position === 35) {
+  //     // DO LAST TURN SHIT
+  //     // ask three questions from the questions the player got wrong.  all three have to be answered right or get 3 new questions.
+  //     if (/* ask question and get right answer */){ // i want to write a function just for this to check length of user.incorrect and either ask random questions, or instead ask questions from the regular game.
+  //       if (/* ask question and get right answer  */){
+  //         if (/* ask question and get right answer  */){
+  //           // load win screen
+  //         }
+  //       }
+  //     }
+  //   } else {
+  //     // this.checkAns = this.checkAns.bind(this)   // i think this is what gets put here.  this needs to be the regular turn stuff.
+  //   }
+  // }
+
+
+  bossFight(){
+
   }
 
   checkAns(selected){
@@ -276,6 +283,16 @@ class Game extends Component {
       // play sound for correct answer
       window.answer_correct_tier_2.play();
       this.state.combat ? this.setState({tissues: this.state.tissues + 1}) : this.setState({position: this.state.position + this.state.spaces})
+      console.log(this.state.position)
+// this is a bad temp fix for the end game. delete this if statement and complete checkPosition() and bossFight() to do for real.
+      if (this.state.position === 35) {
+        console.log('endgame test.  pretend this is a win screen')
+        return (
+          <div className="col-xs-6 no-side-paddings game-board-box">
+            <Winner />
+          </div>
+        )
+      }
     } else {
       // play sound for incorrect answer
       window.answer_incorrect.play();
