@@ -104,7 +104,8 @@ app.post('/api/user', function (req, res) {
       return console.log("save user error: " + err);
     }
     console.log("saved ", user.user.name);
-  }
+  })
+})
 
   // edit one user
   app.put('/api/user/:id', function (req, res){
@@ -138,7 +139,7 @@ app.delete('/api/user/:id', function (req, res) {
     res.json(deletedUser);
   });
   })
-})
+
 
 app.get('*', (req, res) => {
   console.log(path.resolve(__dirname, './react-ui/build', 'index.html'))
