@@ -9,6 +9,7 @@ import AudioStuff from './audiostuff';
 import Wad from 'web-audio-daw';
 import mathPool from './mathpool'
 import sciencePool from './sciencepool'
+import Credits from './credits'
 
 let user = {
   name: "Drizz",
@@ -108,12 +109,14 @@ class Game extends Component {
       spaces: 1,  // not currently in use.  allows us to make some questions worth more than one space of movement
       enemy: 1,
       start: true,
-      endgame: false
+      endgame: false,
+      credits: false
     };
     this.splat = this.splat.bind(this)
     this.hunt = this.hunt.bind(this)
     this.checkAns = this.checkAns.bind(this)
     this.begin = this.begin.bind(this)
+    this.creditToggle = this.creditToggle.bind(this)
   }
 
 
@@ -133,6 +136,9 @@ class Game extends Component {
   //   }
   // }
 
+  creditToggle(){
+    this.state.credits ? this.setState({credits: false, start: false}) : this.setState({credits:true})
+  }
 
   bossFight(){
     // insert code to check to see if the length of the user.incorrect array is long enough to ask X number of questions.
@@ -333,7 +339,13 @@ class Game extends Component {
   render(){
 
     if (this.state.endgame === true){
-      return (<Winner />)
+      return (<Winner/>)
+    }
+
+    if (this.state.credits === true){
+      return (<Credits
+              creditToggle={this.creditToggle}
+              />)
     }
 
     if (this.state.start === true){
@@ -369,6 +381,10 @@ class Game extends Component {
             className="btn btn-primary"
             onClick={this.begin}
             >Start Game</button>
+            <button
+              className="btn btn-warning"
+              onClick={this.creditToggle}
+              >Credits</button>
         </div>
       )
     }
