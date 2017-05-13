@@ -274,7 +274,10 @@ class Game extends Component {
 
 
   bossFight(){
-
+    // insert code to check to see if the length of the user.incorrect array is long enough to ask X number of questions.
+    // if it is, then go ahead and ask 1 question.  if the answer is correct, ask another until you get X correct answers in a row.
+    // if any of these questions is wrong, then start the counter over.
+    // if there aren't enough user.incorrect questions, then suppliment any/all with regular questions.
   }
 
   checkAns(selected){
@@ -283,10 +286,11 @@ class Game extends Component {
       // play sound for correct answer
       window.answer_correct_tier_2.play();
       this.state.combat ? this.setState({tissues: this.state.tissues + 1}) : this.setState({position: this.state.position + this.state.spaces})
-      console.log(this.state.position)
+      console.log('my position is ', this.state.position)
 // this is a bad temp fix for the end game. delete this if statement and complete checkPosition() and bossFight() to do for real.
       if (this.state.position === 35) {
         console.log('endgame test.  pretend this is a win screen')
+// this doesn't work.  we need to call the winner component.
         return (
           <div className="col-xs-6 no-side-paddings game-board-box">
             <Winner />
