@@ -4,13 +4,11 @@ import Enemy from './enemy';
 import Board from './board';
 import Winner from './winner';
 import Test from './test' // no semi colon here, there's a good reason for this I'm assuming
-
 import MathQuestion from './math-question';
-
 import AudioStuff from './audiostuff';
-
 import Wad from 'web-audio-daw';
-
+import mathPool from './mathpool'
+import sciencePool from './sciencepool'
 
 const questions = [
   {
@@ -321,9 +319,9 @@ class Game extends Component {
   }
 
   combat() {
-    let current = Math.floor(Math.random()*questions.length)
+    let current = Math.floor(Math.random()*sciencePool.length)
     // insert a statechange
-    user.currentQuestion = questions[current];
+    user.currentQuestion = sciencePool[current];
     return (
       <div>
         <div className="row">
@@ -342,7 +340,7 @@ class Game extends Component {
         <div className="row">
           <div className="col-xs-12 no-side-paddings">
             <Question
-              question={questions[current]}
+              question={sciencePool[current]}
               checkAns={this.checkAns}
             />
           </div>
@@ -352,6 +350,7 @@ class Game extends Component {
   }
 
   map() {
+    let current = Math.floor(Math.random()*mathPool.length)
     return(
       <div>
         <div className="row">
@@ -365,7 +364,7 @@ class Game extends Component {
             <div className="row">
               <div className="col-xs-12">
                 <MathQuestion
-                  question={questions[1]}
+                  question={mathPool[current]}
                   checkAns={this.checkAns}
                 />
               </div>

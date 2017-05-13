@@ -150,7 +150,7 @@ html {
   position: relative;
 }
 
-.progress-boat { 
+.progress-boat {
     position: absolute;
     top: 616px;
     left: 200px;
@@ -164,138 +164,138 @@ html {
 
 
 
-.progress-boat.step2 { 
+.progress-boat.step2 {
     top: 625px;
     left: 256px;
 }
 
-.progress-boat.step3 { 
+.progress-boat.step3 {
     top: 625px;
     left: 256px;
 }
 
-.progress-boat.step4 { 
+.progress-boat.step4 {
     top: 598px;
     left: 339px;
 }
 
-.progress-boat.step5 { 
+.progress-boat.step5 {
     top: 558px;
     left: 360px;
 }
 
-.progress-boat.step6 { 
+.progress-boat.step6 {
     top: 512px;
     left: 342px;
 }
 
-.progress-boat.step7 { 
+.progress-boat.step7 {
     top: 482px;
     left: 300px;
 }
 
 
-.progress-boat.step8 { 
+.progress-boat.step8 {
     top: 475px;
     left: 240px;
 }
 
-.progress-boat.step9 { 
+.progress-boat.step9 {
     top: 475px;
     left: 184px;
 }
 
-.progress-boat.step10 { 
+.progress-boat.step10 {
     top: 464px;
     left: 134px;
 }
 
-.progress-boat.step11 { 
+.progress-boat.step11 {
     top: 420px;
     left: 120px;
 }
 
-.progress-boat.step12 { 
+.progress-boat.step12 {
     top: 386px;
     left: 152px;
 }
 
-.progress-boat.step13 { 
+.progress-boat.step13 {
 
     top: 380px;
     left: 202px;
 }
 
-.progress-boat.step14 { 
+.progress-boat.step14 {
 
     top: 377px;
     left: 254px;
 }
 
-.progress-boat.step15 { 
+.progress-boat.step15 {
 
     top: 371px;
     left: 299px;
 }
 
-.progress-boat.step16 { 
+.progress-boat.step16 {
 
     top: 351px;
     left: 339px;
 }
 
-.progress-boat.step17 { 
+.progress-boat.step17 {
 
     top: 303px;
     left: 345px;
 }
 
-.progress-boat.step18 { 
+.progress-boat.step18 {
     top: 273px;
     left: 315px;
 }
 
-.progress-boat.step19 { 
+.progress-boat.step19 {
     top: 273px;
     left: 255px;
 }
 
-.progress-boat.step20 { 
+.progress-boat.step20 {
     top: 280px;
     left: 190px;
 }
 
-.progress-boat.step21 { 
+.progress-boat.step21 {
     top: 280px;
     left: 120px;
 }
 
-.progress-boat.step22 { 
+.progress-boat.step22 {
     top: 243px;
     left: 80px;
 }
 
-.progress-boat.step23 { 
+.progress-boat.step23 {
     top: 203px;
     left: 130px;
 }
 
-.progress-boat.step24 { 
+.progress-boat.step24 {
     top: 192px;
     left: 191px;
 }
 
-.progress-boat.step25 { 
+.progress-boat.step25 {
     top: 187px;
     left: 251px;
 }
 
-.progress-boat.step26 { 
+.progress-boat.step26 {
     top: 178px;
     left: 299px;
 }
 
-.progress-boat.step27 { 
+.progress-boat.step27 {
     top: 140px;
     left: 313px;
 }
@@ -305,37 +305,37 @@ html {
     left: 283px;
 }
 
-.progress-boat.step29 { 
+.progress-boat.step29 {
     top: 108px;
     left: 237px;
 }
 
-.progress-boat.step30 { 
+.progress-boat.step30 {
     top: 113px;
     left: 187px;
 }
 
-.progress-boat.step31 { 
+.progress-boat.step31 {
     top: 83px;
     left: 147px;
 }
 
-.progress-boat.step32 { 
+.progress-boat.step32 {
     top: 41px;
     left: 163px;
 }
 
-.progress-boat.step33 { 
+.progress-boat.step33 {
     top: 25px;
     left: 197px;
 }
 
-.progress-boat.step34 { 
+.progress-boat.step34 {
     top: 15px;
     left: 237px;
 }
 
-.progress-boat.step35 { 
+.progress-boat.step35 {
     top: 15px;
     left: 277px;
 }
@@ -344,3 +344,6 @@ html {
   width: 600px;
 }
 
+.answer-btn {
+  margin-bottom: 3px; 
+}

@@ -33,7 +33,7 @@ class MathQuestion extends Component {
 
     let answers = bank.map((selection)=>{
       return (
-        <div className="col-xs-3" key={selection.ans}>
+        <div className="col-xs-6 answer-btn" key={selection.ans}>
           <button
             className="btn btn-answer"
             onClick={()=>{this.props.checkAns(selection)}}
@@ -44,9 +44,6 @@ class MathQuestion extends Component {
 
     return (
       <div className="MathQuestion">
-
-	      <h1>Math questions!</h1>
-
       	<div className="question-container">
       		<p>
       			{this.props.question.question}
