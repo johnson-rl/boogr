@@ -10,142 +10,6 @@ import Wad from 'web-audio-daw';
 import mathPool from './mathpool'
 import sciencePool from './sciencepool'
 
-const questions = [
-  {
-    question: "What's the average speed of a laden swallow",
-    correct: "European or African swallow?",
-    incorrect: ["I DON'T KNOW THAT", "Blue.  No wait!  Yellowwwwwww!", "Ni"],
-    difficulty: 3,
-    subject: "subject must be in quotes"
-  },
-  {
-    question: "It takes 5 tissues to defeat a booger. Billy has 3 tissues. How many more does he need?",
-    correct: "2",
-    incorrect: ["1", "4", "7"],
-    difficulty: 5,
-    subject: "subject must be in quotes"
-  },
-  {
-    question: "How many days are there in January",
-    correct: "The answer should be in quotes too",
-    incorrect: ["The first wrong in quotes", "The second wrong in quotes", "the third wrong in quotes"],
-    difficulty: 1,
-    subject: "Kids Trivia"
-  },
-  {
-    question: "Great Whites and Hammerheads are what type of animals?",
-    correct: "Sharks",
-    incorrect: ["Horses", "Elephants", "Birds"],
-    difficulty: 1,
-    subject: "Kids Trivia"
-  },
-  {
-    question: "According to legend, who led a gang of merry outlaws in Sherwood Forest in Nottingham, England?",
-    correct: "Robin Hood",
-    incorrect: ["Pocahontas", "Aladdin", "Peter Pan"],
-    difficulty: 1,
-    subject: "Kids Trivia"
-  },
-  {
-    question: "How many legs does a spider have?",
-    correct: "8",
-    incorrect: ["2", "4", "6"],
-    difficulty: 1,
-    subject: "Kids Trivia"
-  },
-  {
-    question: "How many rings make up the symbol of the Olympic Games?",
-    correct: "5",
-    incorrect: ["3", "4", "6"],
-    difficulty: 1,
-    subject: "Kids Trivia"
-  },
-  {
-    question: "In which continent is the country of Egypt found?",
-    correct: "Africa",
-    incorrect: ["Asia", "Asia", "America"],
-    difficulty: 1,
-    subject: "Kids Trivia"
-  },
-  {
-    question: "Which country is home to the kangaroo?",
-    correct: "Australia",
-    incorrect: ["Mexico", "Argentina", "Russia"],
-    difficulty: 1,
-    subject: "Kids Trivia"
-  },
-  {
-    question: "What is the name of Shrek's wife?",
-    correct: "Princess Fiona",
-    incorrect: ["Princess Snowhite", "Princess Diana", "Princess Jasmine"],
-    difficulty: 1,
-    subject: "Kids Trivia"
-  },
-  {
-    question: "How many lungs do humans normally have?",
-    correct: "2",
-    incorrect: ["1", "3", "4"],
-    difficulty: 1,
-    subject: "Kids Trivia"
-  },
-  {
-    question: "Is the planet Jupiter larger or smaller than the Earth?",
-    correct: "Larger",
-    incorrect: ["Smaller"],
-    difficulty: 2,
-    subject: "Kids Trivia"
-  },
-  {
-    question: "What is the top colour in a rainbow",
-    correct: "Red",
-    incorrect: ["Orange", "Yellow", "Green"],
-    difficulty: 1,
-    subject: "Kids Trivia"
-  },
-  {
-    question: "How many hours are in a day?",
-    correct: "24",
-    incorrect: ["12", "18", "25"],
-    difficulty: 1,
-    subject: "Kids Trivia"
-  },
-  {
-    question: "What colour are Smurfs?",
-    correct: "Blue",
-    incorrect: ["Red", "Green", "Purple"],
-    difficulty: 1,
-    subject: "Kids Trivia"
-  },
-  {
-    question: "What is the capital of England?",
-    correct: "London",
-    incorrect: ["Paris", "Berlin", "Dublin"],
-    difficulty: 1,
-    subject: "Kids Trivia"
-  },
-  {
-    question: "Which planet in our Solar System is known for having a ring?",
-    correct: "Saturn",
-    incorrect: ["Mars", "Earth", "Uranus"],
-    difficulty: 2,
-    subject: "Kids Trivia"
-  },
-  {
-    question: "What color is the circle on the Japanese national flag?",
-    correct: "Red",
-    incorrect: ["Blue", "White", "Yellow"],
-    difficulty: 2,
-    subject: "Kids Trivia"
-  },
-  {
-    question: "GZZZzzzzzzzz",
-    correct: "Sharks",
-    incorrect: ["Horses", "Elephants", "Birds"],
-    difficulty: 1,
-    subject: "Kids Trivia"
-  }
-]
-
 let user = {
   name: "Drizz",
   position: 1,
@@ -165,12 +29,6 @@ const donors = [
   "You’re disinfecting the Crime Boss Drizz. Look out! The Boss is corrupt and fierce.",
   "You’re disinfecting Thegamershizzap! Keep your cool! Thegamershizzap is crafty and tricky."
 ]
-
-
-/* Load Music & Audio FX */
-
-/* Boogie Down Song ----------- */
-
 
 /* Submarine Sonar */
 window.sub_sonar = new Wad({source : 'https://dl.dropboxusercontent.com/s/ntcsq50xlq7bq2d/sub_sonar.mp3?dl=1'});
@@ -249,7 +107,8 @@ class Game extends Component {
       attempts: 3,
       spaces: 1,  // not currently in use.  allows us to make some questions worth more than one space of movement
       enemy: 1,
-      start: true
+      start: true,
+      endgame: false
     };
     this.splat = this.splat.bind(this)
     this.hunt = this.hunt.bind(this)
@@ -293,11 +152,7 @@ class Game extends Component {
       if (this.state.position === 35) {
         console.log('endgame test.  pretend this is a win screen')
 // this doesn't work.  we need to call the winner component.
-        return (
-          <div className="col-xs-6 no-side-paddings game-board-box">
-            <Winner />
-          </div>
-        )
+        this.setState({endgame:true})
       }
     } else {
       // play sound for incorrect answer
@@ -477,6 +332,10 @@ class Game extends Component {
 
   render(){
 
+    if (this.state.endgame === true){
+      return (<Winner />)
+    }
+
     if (this.state.start === true){
       window.vo_start.play({
             loop    : false, // This overrides the value for loop on the constructor, if it was set.
@@ -501,8 +360,10 @@ class Game extends Component {
         })
       return (
         <div>
-          <h1>Boogie Down:</h1>
-          <h3>Journey to the center of Dr. GoodGuyManDudeBroChief...or something</h3>
+          <div className="game-title">
+            <h1>Boogie Down:</h1>
+            <h3>Journey to the center of Dr. GoodGuyManDudeBroChief...or something</h3>
+          </div>
           <img className="image-width" src="https://www.dropbox.com/s/rdi0gj7b0hqbuj1/dr_boogertron.png?dl=1"></img>
           <button
             className="btn btn-primary"

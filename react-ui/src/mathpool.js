@@ -191,27 +191,27 @@ const mathPool = [
   },
 
   //3rd grade Math
-  {
-    question: "Which addition problem is the same as 525+379?",
-    correct: "500 + 300 + 20 + 70 + 5 + 9",
-    incorrect: ["50 + 30 + 20 + 70 + 50 + 90", "500 + 300 + 20 + 90 + 5 + 7", "250 + 250 + 300 + 30 + 60 + 20"],
-    difficulty: 2,
-    subject: "Math"
-  },
-  {
-    question: "Which addition problem is the same as 45 + 917?",
-    correct: "9 hundreds + 4 tens + 1 ten + 5 ones + 7 ones",
-    incorrect: ["7 hundreds + 9 tens + 5 tens + 1 ten + 7 ones", "9 hundreds + 4 hundreds + 1 ten + 5 tens + 7 ones", "9 hundreds + 5 tens + 1 ten + 4 ones + 7 ones"],
-    difficulty: 2,
-    subject: "Math"
-  },
-  {
-    question: "Which expression could be used to find the value of 871 + 140?",
-    correct: "8 hundreds + 1 hundred + 7 tens + 4 tens + 1 one",
-    incorrect: ["8 hundreds + 1 hundred + 7 tens + 4 ones + 1 one", "8 ones + 1 one + 7 ones + 4 ones + 1 one", "8 tens + 1 hundred + 7 ones + 4 tens + 1 one"],
-    difficulty: 2,
-    subject: "Math"
-  },
+  // {
+  //   question: "Which addition problem is the same as 525+379?",
+  //   correct: "500 + 300 + 20 + 70 + 5 + 9",
+  //   incorrect: ["50 + 30 + 20 + 70 + 50 + 90", "500 + 300 + 20 + 90 + 5 + 7", "250 + 250 + 300 + 30 + 60 + 20"],
+  //   difficulty: 2,
+  //   subject: "Math"
+  // },
+  // {
+  //   question: "Which addition problem is the same as 45 + 917?",
+  //   correct: "9 hundreds + 4 tens + 1 ten + 5 ones + 7 ones",
+  //   incorrect: ["7 hundreds + 9 tens + 5 tens + 1 ten + 7 ones", "9 hundreds + 4 hundreds + 1 ten + 5 tens + 7 ones", "9 hundreds + 5 tens + 1 ten + 4 ones + 7 ones"],
+  //   difficulty: 2,
+  //   subject: "Math"
+  // },
+  // {
+  //   question: "Which expression could be used to find the value of 871 + 140?",
+  //   correct: "8 hundreds + 1 hundred + 7 tens + 4 tens + 1 one",
+  //   incorrect: ["8 hundreds + 1 hundred + 7 tens + 4 ones + 1 one", "8 ones + 1 one + 7 ones + 4 ones + 1 one", "8 tens + 1 hundred + 7 ones + 4 tens + 1 one"],
+  //   difficulty: 2,
+  //   subject: "Math"
+  // },
   {
     question: "93 + 45 is the same as:",
     correct: "90 + 47",
@@ -219,20 +219,20 @@ const mathPool = [
     difficulty: 2,
     subject: "Math"
   },
-  {
-    question: "Which addition problem is the same as 350 + 473?",
-    correct: "50 + 300 + 400 + 30 + 40 + 3",
-    incorrect: ["30 + 50 + 40 + 70 + 40 + 3", "300 + 70 + 400 + 500 + 40 + 3", "70 + 30 + 50 + 300 + 40 + 3"],
-    difficulty: 2,
-    subject: "Math"
-  },
-  {
-    question: "Which addition problem is the same as 23 + 501?",
-    correct: "5 hundreds + 2 tens + 3 ones + 1 one",
-    incorrect: ["2 hundreds + 5 tens + 3 ones + 1 one", "2 tens + 5 ones + 3 hundreds + 1 one", "1 hundred + 5 ones + 2 tens + 1 one"],
-    difficulty: 2,
-    subject: "Math"
-  },
+  // {
+  //   question: "Which addition problem is the same as 350 + 473?",
+  //   correct: "50 + 300 + 400 + 30 + 40 + 3",
+  //   incorrect: ["30 + 50 + 40 + 70 + 40 + 3", "300 + 70 + 400 + 500 + 40 + 3", "70 + 30 + 50 + 300 + 40 + 3"],
+  //   difficulty: 2,
+  //   subject: "Math"
+  // },
+  // {
+  //   question: "Which addition problem is the same as 23 + 501?",
+  //   correct: "5 hundreds + 2 tens + 3 ones + 1 one",
+  //   incorrect: ["2 hundreds + 5 tens + 3 ones + 1 one", "2 tens + 5 ones + 3 hundreds + 1 one", "1 hundred + 5 ones + 2 tens + 1 one"],
+  //   difficulty: 2,
+  //   subject: "Math"
+  // },
   {
     question: "What is the product of 2 and 70?",
     correct: "140",

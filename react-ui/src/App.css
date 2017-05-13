@@ -1,5 +1,5 @@
 html {
-  background-image: url('https://www.dropbox.com/s/2mjpyup8d2y80oq/BloodVein.png?dl=1');
+  background-image: url('https://www.dropbox.com/s/q97qnb6324kvzfh/BloodVein.jpg?dl=1');
 }
 
 .App {
@@ -345,5 +345,10 @@ html {
 }
 
 .answer-btn {
-  margin-bottom: 3px; 
+  margin-bottom: 3px;
+}
+
+.game-title {
+  font-family: 'Creepster', cursive;
+  color: #7CBB35;
 }
