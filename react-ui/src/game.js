@@ -179,8 +179,8 @@ window.sub_sonar.play({
       env     : {      // This is the ADSR envelope.
           attack  : 15,  // Time in seconds from onset to peak volume.  Common values for oscillators may range from 0.05 to 0.3.
           decay   : 0,  // Time in seconds from peak volume to sustain volume.
-          sustain : 0.5,  // Sustain volume level. This is a percent of the peak volume, so sensible values are between 0 and 1.
-          hold    : 86400, // Time in seconds to maintain the sustain volume level. If this is not set to a lower value, oscillators must be manually stopped by calling their stop() method.
+          sustain : 0.2,  // Sustain volume level. This is a percent of the peak volume, so sensible values are between 0 and 1.
+          hold    : 150, // Time in seconds to maintain the sustain volume level. If this is not set to a lower value, oscillators must be manually stopped by calling their stop() method.
           release : 0     // Time in seconds from the end of the hold period to zero volume, or from calling stop() to zero volume.
       },
 });
@@ -192,8 +192,12 @@ window.ship_move = new Wad({source : 'https://dl.dropboxusercontent.com/s/qc468p
 
 
 /* Intro VO */
-window.vo_start = new Wad({source : 'https://dl.dropboxusercontent.com/s/68qxqx6hwjxso6j/vo_start.mp3?dl=1'});
-window.vo_inside = new Wad({source : 'https://dl.dropboxusercontent.com/s/6qmi7vnsh9nebu0/vo_inside_body_V2.mp3?dl=0'});
+// window.vo_start = new Wad({source : 'https://dl.dropboxusercontent.com/s/68qxqx6hwjxso6j/vo_start.mp3?dl=1'});
+// window.vo_inside = new Wad({source : 'https://dl.dropboxusercontent.com/s/6qmi7vnsh9nebu0/vo_inside_body_V2.mp3?dl=0'});
+
+
+window.vo_start = new Wad({source : 'https://dl.dropboxusercontent.com/s/4vupmll5y9vz51u/aryn_vo_part1.mp3?dl=1'});
+window.vo_inside = new Wad({source : 'https://dl.dropboxusercontent.com/s/3x2c1588he22bza/aryn_vo_part2.mp3?dl=1'});
 
 
 // FX sounds
@@ -329,7 +333,9 @@ class Game extends Component {
             </div>
           </div>
           <div className="col-xs-6 no-side-paddings game-board-box">
-            <Board />
+            <Board
+             position={this.state.position}
+             />
           </div>
         </div>
 
@@ -421,7 +427,7 @@ class Game extends Component {
             env     : {      // This is the ADSR envelope.
                 attack  : 1.5,  // Time in seconds from onset to peak volume.  Common values for oscillators may range from 0.05 to 0.3.
                 decay   : 0,  // Time in seconds from peak volume to sustain volume.
-                sustain : 1,  // Sustain volume level. This is a percent of the peak volume, so sensible values are between 0 and 1.
+                sustain : 0.7,  // Sustain volume level. This is a percent of the peak volume, so sensible values are between 0 and 1.
                 hold    : 86400, // Time in seconds to maintain the sustain volume level. If this is not set to a lower value, oscillators must be manually stopped by calling their stop() method.
                 release : 0     // Time in seconds from the end of the hold period to zero volume, or from calling stop() to zero volume.
             },
