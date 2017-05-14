@@ -255,9 +255,9 @@ const mathPool = [
     subject: "Math"
   },
   {
-    question: "Fill in the blank: 56 + __ = 7",
-    correct: "8 days",
-    incorrect: ["27 days", "49 days", "63 days"],
+    question: "Fill in the blank: 56 + __ = 70",
+    correct: "14",
+    incorrect: ["27", "49", "63"],
     difficulty: 2,
     subject: "Math"
   },
