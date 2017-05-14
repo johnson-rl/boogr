@@ -35,7 +35,7 @@ class MathQuestion extends Component {
       return (
         <div className="col-xs-6 answer-btn" key={selection.ans}>
           <button
-            className="btn btn-answer"
+            className="btn btn-answer btn-color"
             onClick={()=>{this.props.checkAns(selection)}}
             >{selection.ans}</button>
         </div>

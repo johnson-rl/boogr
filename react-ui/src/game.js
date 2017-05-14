@@ -269,7 +269,7 @@ class Game extends Component {
           <h4>{donors[enemyName]}</h4>
             <div className="col-xs-4 col-xs-offset-2">
               <button
-                className="btn btn-danger btn-large"
+                className="btn btn-large btn-color"
                 onClick={()=>{
                     this.hunt();
                     window.panel_transition_02.play(); // play panel transition sound
@@ -280,7 +280,7 @@ class Game extends Component {
           { attack ?
             <div className="col-xs-4 ">
               <button
-                className="btn btn-primary btn-large"
+                className="btn btn-large btn-color"
                 onClick={()=>{
                   this.splat(this.state.enemy);
                   window.panel_transition_01.play(); // play panel transition sound
@@ -377,15 +377,27 @@ class Game extends Component {
             <h1>Boogie Down:</h1>
             <h3>Journey to the center of Dr. GoodGuyManDudeBroChief...or something</h3>
           </div>
-          <img className="image-width" src="https://www.dropbox.com/s/rdi0gj7b0hqbuj1/dr_boogertron.png?dl=1"></img>
-          <button
-            className="btn btn-primary"
-            onClick={this.begin}
-            >Start Game</button>
-            <button
-              className="btn btn-warning"
-              onClick={this.creditToggle}
-              >Credits</button>
+          <div className="row">
+            <div className="col-xs-8">
+              <img className="image-width" src="https://www.dropbox.com/s/rdi0gj7b0hqbuj1/dr_boogertron.png?dl=1"></img>
+            </div>
+            <div className="col-xs-4 start-button-area">
+              <div className="row">
+                <button
+                  className="btn btn-large start-buttons"
+                  onClick={this.begin}
+                  >Start Game
+                </button>
+              </div>
+              <div className="row">
+                <button
+                  className="btn btn-large start-buttons"
+                  onClick={this.creditToggle}
+                  >Credits
+                </button>
+              </div>
+            </div>
+          </div>
         </div>
       )
     }

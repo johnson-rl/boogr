@@ -135,7 +135,7 @@ const mathPool = [
   },
   {
     question: "2 x 8 = ?",
-    correct: "2",
+    correct: "16",
     incorrect: ["6", "10", "20"],
     difficulty: 1,
     subject: "Math"
@@ -371,8 +371,8 @@ const mathPool = [
   },
   {
     question: "400 / -20",
-    correct: "20",
-    incorrect: [ "-20", "21", "-12"],
+    correct: "-20",
+    incorrect: [ "20", "21", "-12"],
     difficulty: 3,
     subject: "Math"
   }

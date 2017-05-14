@@ -351,4 +351,30 @@ html {
 .game-title {
   font-family: 'Creepster', cursive;
   color: #7CBB35;
+  text-shadow: 2px 2px black;
+  margin-bottom: 40px;
+}
+
+p {
+  font-size: 1.5em;
+}
+
+.game-credits {
+  font-family: 'Creepster', cursive;
+  color : #7CBB35;
+  text-shadow: 2px 2px black;
+}
+
+.start-button-area {
+  margin-top: 150px;
+}
+
+.start-buttons {
+  margin-top: 20px;
+  background-color: #1BBABA;
+}
+
+.btn-color {
+  background-color: #1BBABA;
+  color: white;
 }
